@@ -3,6 +3,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+before running this project make sure you install a chrome extension https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc,as
+the project uses api which is blocked by chrome(to avoid cors error)
+
 
 In the project directory, you can run:
 
