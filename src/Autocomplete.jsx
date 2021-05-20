@@ -15,7 +15,7 @@ export class Autocomplete extends Component {
     this.state = {
       currentSuggestion: 0,
       filteredSuggestion: [],
-     isShow: false,
+      isShow: false,
       userInput: "",
     };
   }
@@ -32,7 +32,7 @@ export class Autocomplete extends Component {
     this.setState({
       currentSuggestion: 0,
       filteredSuggestion,
-     isShow: true,
+      isShow: true,
       userInput: e.currentTarget.value,
     });
   };
@@ -41,7 +41,7 @@ export class Autocomplete extends Component {
     this.setState({
       currentSuggestion: 0,
       filteredSuggestion: [],
-     isShow: false,
+      isShow: false,
       userInput: e.currentTarget.innerText,
     });
   };
@@ -51,7 +51,7 @@ export class Autocomplete extends Component {
     if (e.keyCode === 13) {
       this.setState({
         currentSuggestion: 0,
-       isShow: false,
+        isShow: false,
         userInput: filteredSuggestion[currentSuggestion],
       });
     } else if (e.keyCode === 38) {
@@ -74,12 +74,7 @@ export class Autocomplete extends Component {
       onChange,
       onClick,
       onKeyDown,
-      state: {
-        currentSuggestion,
-        filteredSuggestion,
-       isShow,
-        userInput,
-      },
+      state: { currentSuggestion, filteredSuggestion, isShow, userInput },
     } = this;
     let suggestionsListComponent;
     if (isShow && userInput) {
@@ -121,9 +116,8 @@ export class Autocomplete extends Component {
             className="searchTerm"
             placeholder="Which place are you looking for?"
           />
-
-          {suggestionsListComponent}
         </div>
+        {suggestionsListComponent}
         <button onClick={(e) => this.props.clickHandle(this.state.userInput)}>
           Search
         </button>
