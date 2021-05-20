@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "./Automcomplete.css";
 
 export class Autocomplete extends Component {
   static propTypes = {
@@ -83,7 +84,7 @@ export class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul class="suggestions">
+          <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -101,7 +102,7 @@ export class Autocomplete extends Component {
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
+          <div className="no-suggestions">
             <em>No suggestions</em>
           </div>
         );
@@ -116,7 +117,11 @@ export class Autocomplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
         />
+
         {suggestionsListComponent}
+        <button onClick={(e) => this.props.clickHandle(this.state.userInput)}>
+          click
+        </button>
       </React.Fragment>
     );
   }
