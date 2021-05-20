@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
 import "./Automcomplete.css";
 
 export class Autocomplete extends Component {
@@ -111,16 +112,20 @@ export class Autocomplete extends Component {
 
     return (
       <React.Fragment>
-        <input
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
+        <div className="search">
+          <input
+            type="text"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={userInput}
+            className="searchTerm"
+            placeholder="Which place are you looking for?"
+          />
 
-        {suggestionsListComponent}
+          {suggestionsListComponent}
+        </div>
         <button onClick={(e) => this.props.clickHandle(this.state.userInput)}>
-          click
+          Search
         </button>
       </React.Fragment>
     );

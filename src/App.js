@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { search } from "./Components/apiCalls";
 import CityComponent from "./Components/City";
-import logo from "./material-icon-2155442_960_720.png";
+
 import Autocomplete from "./Autocomplete";
 import { citylist } from "./Components/Citylist";
 
@@ -22,19 +22,8 @@ const App = () => {
     <div className="Imgtag">
       <h1 style={{ textAlign: "center" }}>Search for the place</h1>
       <div className="wrap">
-        <div className="search">
-          <input
-            type="text"
-            value={data}
-            onChange={(e) => handleChange(e)}
-            className="searchTerm"
-            placeholder="Which place are you looking for?"
-          />
-          <Autocomplete suggestions={citylist} clickHandle={handleSubmit} />
-          <button onClick={() => handleSubmit(data)} className="searchButton">
-            <img src={logo} className="Image"></img>
-          </button>
-        </div>
+        
+        <Autocomplete suggestions={citylist} clickHandle={handleSubmit} />
         <div>
           {list !== undefined &&
             list.map((l, index) => (
