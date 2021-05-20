@@ -1,0 +1,20 @@
+.wheather {
+  margin: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2em;
+}
+
+.Card {
+  text-align: center;
+  margin: 30px 0px;
+  width: 80%;
+  box-shadow: 2px 5px 5px rgb(153, 149, 149);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.ImageCard {
+  width: 50px;
+  height: 50px;
+}
