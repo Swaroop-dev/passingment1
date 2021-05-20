@@ -13,9 +13,9 @@ export class Autocomplete extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
+      currentSuggestion: 0,
+      filteredSuggestion: [],
+     isShow: false,
       userInput: "",
     };
   }
@@ -24,48 +24,48 @@ export class Autocomplete extends Component {
     const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
 
-    const filteredSuggestions = suggestions.filter(
+    const filteredSuggestion = suggestions.filter(
       (suggestion) =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
 
     this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions,
-      showSuggestions: true,
+      currentSuggestion: 0,
+      filteredSuggestion,
+     isShow: true,
       userInput: e.currentTarget.value,
     });
   };
 
   onClick = (e) => {
     this.setState({
-      activeSuggestion: 0,
-      filteredSuggestions: [],
-      showSuggestions: false,
+      currentSuggestion: 0,
+      filteredSuggestion: [],
+     isShow: false,
       userInput: e.currentTarget.innerText,
     });
   };
   onKeyDown = (e) => {
-    const { activeSuggestion, filteredSuggestions } = this.state;
+    const { currentSuggestion, filteredSuggestion } = this.state;
 
     if (e.keyCode === 13) {
       this.setState({
-        activeSuggestion: 0,
-        showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion],
+        currentSuggestion: 0,
+       isShow: false,
+        userInput: filteredSuggestion[currentSuggestion],
       });
     } else if (e.keyCode === 38) {
-      if (activeSuggestion === 0) {
+      if (currentSuggestion === 0) {
         return;
       }
 
-      this.setState({ activeSuggestion: activeSuggestion - 1 });
+      this.setState({ currentSuggestion: currentSuggestion - 1 });
     } else if (e.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
+      if (currentSuggestion - 1 === filteredSuggestion.length) {
         return;
       }
 
-      this.setState({ activeSuggestion: activeSuggestion + 1 });
+      this.setState({ currentSuggestion: currentSuggestion + 1 });
     }
   };
 
@@ -75,21 +75,21 @@ export class Autocomplete extends Component {
       onClick,
       onKeyDown,
       state: {
-        activeSuggestion,
-        filteredSuggestions,
-        showSuggestions,
+        currentSuggestion,
+        filteredSuggestion,
+       isShow,
         userInput,
       },
     } = this;
     let suggestionsListComponent;
-    if (showSuggestions && userInput) {
-      if (filteredSuggestions.length) {
+    if (isShow && userInput) {
+      if (filteredSuggestion.length) {
         suggestionsListComponent = (
           <ul className="suggestions">
-            {filteredSuggestions.map((suggestion, index) => {
+            {filteredSuggestion.map((suggestion, index) => {
               let className;
 
-              if (index === activeSuggestion) {
+              if (index === currentSuggestion) {
                 className = "suggestion-active";
               }
 
